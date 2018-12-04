@@ -382,12 +382,14 @@ class BoundingBoxAugmenters(implements(BoundingBoxAugmentersMethods)):
 			raise TypeError("ERROR: Bounding boxes parameter has to be of type list.")
 		# Local variables
 		localFrame = frame[:, :, :]
+		# Copy of Local variables
+		tmpFrame = localFrame.copy()
 		# Flip only the pixels inside the bounding boxes
 		for bndbox in boundingBoxes:
 			# Decode bounding box
 			ix, iy, x, y = bndbox
 			# Flip ROI
-			roi = cv2.flip(localFrame[iy:y, ix:x, :], 1)
+			roi = cv2.flip(tmpFrame[iy:y, ix:x, :], 1)
 			localFrame[iy:y, ix:x, :] = roi
 		return localFrame
 
@@ -410,12 +412,14 @@ class BoundingBoxAugmenters(implements(BoundingBoxAugmentersMethods)):
 			raise TypeError("ERROR: Bounding boxes parameter has to be of type list.")
 		# Local variables
 		localFrame = frame[:, :, :]
+		# Copy of Local variables
+		tmpFrame = localFrame.copy()
 		# Flip only the pixels inside the bounding boxes
 		for bndbox in boundingBoxes:
 			# Decode bounding box
 			ix, iy, x, y = bndbox
-			# Flip ROI
-			roi = cv2.flip(localFrame[iy:y, ix:x, :], 0)
+			# Flip ROI in Local variables
+			roi = cv2.flip(tmpFrame[iy:y, ix:x, :], 0)
 			localFrame[iy:y, ix:x, :] = roi
 		return localFrame
 

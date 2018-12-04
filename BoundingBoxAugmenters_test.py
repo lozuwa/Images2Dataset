@@ -179,7 +179,7 @@ class BoundingBoxAugmenters_test(unittest.TestCase):
 
 	def test_vertical_flip(self):
 		if (self.visualize):
-			# Perform horizontal flip.
+			# Perform vertical flip.
 			frame = self.augmenter.verticalFlip(frame = self.frame.copy(),
 																						boundingBoxes = self.bndboxes)
 			# Visualization.
